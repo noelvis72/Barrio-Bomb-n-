@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrio Bombón | Bombones y tabletas artesanales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            color: #1b3b1a;
+            line-height: 1.6;
+        }
+
+        /* VERDES: pastel y esmeralda */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER con logo personalizado */
+        header {
+            background: #1a4d1a;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* LOGO: mini viñeta + texto */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            position: relative;
+            width: 55px;
+            height: 55px;
+        }
+
+        .logo-icon .casita1 {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            font-size: 28px;
+            color: #d97706;
+        }
+
+        .logo-icon .casita2 {
+            position: absolute;
+            bottom: 5px;
+            left: 22px;
+            font-size: 22px;
+            color: #f59e0b;
+        }
+
+        .logo-icon .bombon-sol {
+            position: absolute;
+            top: 0;
+            left: 12px;
+            font-size: 32px;
+            filter: drop-shadow(0 0 5px #fbbf24);
+            animation: brillar 2s infinite;
+        }
+
+        @keyframes brillar {
+            0%, 100% { transform: scale(1); opacity: 1; text-shadow: 0 0 2px gold; }
+            50% { transform: scale(1.1); opacity: 0.9; text-shadow: 0 0 12px #ffd966; }
+        }
+
+        .logo-text h1 {
+            font-size: 1.7rem;
+            font-weight: bold;
+            color: #f5b042;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: #c8e6c9;
+        }
+
+        /* Navegación */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+
+        .btn-contacto {
+            background: #d97706;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        /* Secciones */
+        section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #1a4d1a;
+            border-bottom: 3px solid #d97706;
+            display: inline-block;
+            width: auto;
+        }
+
+        .title-center {
+            text-align: center;
+        }
+
+        /* Productos grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #b7dfb0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #1a4d1a;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d97706;
+            margin: 15px 0;
+        }
+
+        .btn-pedir {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-pedir:hover {
+            background: #128C7E;
+        }
+
+        /* Sección contacto dual */
+        .contacto-dual {
+            background: #1a4d1a;
+            color: white;
+            border-radius: 40px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .btn-wsp {
+            background: #25D366;
+            padding: 14px 35px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        .btn-email {
+            background: #ea4335;
+            padding: 14px 35px;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0e3a0e;
+            color: #c8e6c9;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <div class="logo-icon">
+                <span class="casita1">🏠</span>
+                <span class="casita2">🏘️</span>
+                <span class="bombon-sol">🍫☀️</span>
+            </div>
+            <div class="logo-text">
+                <h1>Barrio Bombón</h1>
+                <p>el sol que endulza tu cuadra</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#bombones">Bombones</a>
+            <a href="#tabletas">Tabletas</a>
+            <a href="#contacto" class="btn-contacto">📞 Contacto</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- FRASE BIENVENIDA -->
+        <section style="text-align: center; padding: 30px 0 10px;">
+            <h2 style="color:#1a4d1a;">🍫 Hecho con amor en el barrio 🏡</h2>
+            <p style="font-size:1.2rem;">Bombones rellenos, tabletas fudge y el sabor de siempre. ¡Pedí sin moverte de casa!</p>
+        </section>
+
+        <!-- BOMBONES -->
+        <section id="bombones">
+            <div class="title-center">
+                <h2 class="section-title">🍬 Bombones artesanales</h2>
+            </div>
+            <div class="products-grid">
+                <!-- Bombón Grande -->
+                <div class="product-card">
+                    <div class="product-icon">🍫✨</div>
+                    <div class="product-title">Bombón Grande</div>
+                    <div class="product-desc">Relleno cremoso de <strong>leche condensada, dulce de leche o maní</strong>. El favorito del barrio.</div>
+                    <div class="price">$60 c/u</div>
+                    <button class="btn-pedir" data-producto="Bombón Grande $60" data-precio="60"><i class="fab fa-whatsapp"></i> Pedir ahora</button>
+                </div>
+                <!-- Bombón Pequeño -->
+                <div class="product-card">
+                    <div class="product-icon">🍬</div>
+                    <div class="product-title">Bombón Pequeño</div>
+                    <div class="product-desc">Práctico y delicioso, mismo relleno: leche condensada, dulce de leche o maní.</div>
+                    <div class="price">$20 c/u</div>
+                    <button class="btn-pedir" data-producto="Bombón Pequeño $20" data-precio="20"><i class="fab fa-whatsapp"></i> Pedir ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TABLETAS FUDGE -->
+        <section id="tabletas">
+            <div class="title-center">
+                <h2 class="section-title">🍫 Tabletas tipo Fudge</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon">🍫🧈</div>
+                    <div class="product-title">Tableta Grande</div>
+                    <div class="product-desc">Rellena con maní, arroz inflado o mix. Ideal para compartir.</div>
+                    <div class="price">$165</div>
+                    <button class="btn-pedir" data-producto="Tableta Fudge Grande $165" data-precio="165"><i class="fab fa-whatsapp"></i> Pedir ahora</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🍫</div>
+                    <div class="product-title">Tableta Mediana</div>
+                    <div class="product-desc">Crujiente por fuera, suave por dentro. Maní o arroz inflado.</div>
+                    <div class="price">$125</div>
+                    <button class="btn-pedir" data-producto="Tableta Fudge Mediana $125" data-precio="125"><i class="fab fa-whatsapp"></i> Pedir ahora</button>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🍬🍫</div>
+                    <div class="product-title">Tableta Pequeña</div>
+                    <div class="product-desc">Tamaño personal, tentación pura. Relleno crocante.</div>
+                    <div class="price">$55</div>
+                    <button class="btn-pedir" data-producto="Tableta Fudge Pequeña $55" data-precio="55"><i class="fab fa-whatsapp"></i> Pedir ahora</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTO DUAL: WhatsApp + Correo -->
+        <section id="contacto">
+            <div class="contacto-dual">
+                <h3><i class="fas fa-heart"></i> Hacé tu pedido al barrio <i class="fas fa-home"></i></h3>
+                <p>Escribinos por WhatsApp o mandanos un mail. ¡Llegamos a toda la zona sin cargo!</p>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/5491112345678?text=Hola%20Barrio%20Bombón%20%F0%9F%8D%AB%20Quiero%20hacer%20un%20pedido%20de%20bombones%20y%20tabletas" class="btn-wsp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +54 9 11 1234-5678</a>
+                    <a href="mailto:barriobombon@casero.com?subject=Pedido%20de%20bombones&body=Hola%2C%20quiero%20encargar%3A%0A-" class="btn-email" target="_blank"><i class="fas fa-envelope"></i> barriobombon@casero.com</a>
+                </div>
+                <p style="margin-top: 25px; font-size: 0.85rem;">✅ Aceptamos efectivo, transferencia, Mercado Pago</p>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>🏡 Barrio Bombón – El sol que endulza tu cuadra ☀️🍫</p>
+    <p>Bombones caseros | Tabletas fudge | Envíos en el barrio sin cargo</p>
+    <p style="margin-top: 10px;">© 2026 - Hecho con amor de vecino a vecino</p>
+</footer>
+
+<script>
+    // Configuración de WhatsApp (CAMBIÁ ESTE NÚMERO POR EL TUYO)
+    const telefonoNegocio = "5491112345678";  // Reemplazar con tu número real ej: 5491155558888
+
+    // Función para generar link de WhatsApp con producto
+    function generarLinkWSP(producto, precio) {
+        let mensaje = `Hola Barrio Bombón 🍫👍 Quiero pedir: *${producto}*. `;
+        mensaje += `Me encantaría saber si tienen stock hoy. ¡Vivo en el barrio! 🏡`;
+        return `https://wa.me/${telefonoNegocio}?text=${encodeURIComponent(mensaje)}`;
+    }
+
+    // Asignar evento a todos los botones de pedido
+    const botones = document.querySelectorAll('.btn-pedir');
+    botones.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const producto = this.getAttribute('data-producto');
+            const precio = this.getAttribute('data-precio');
+            const url = generarLinkWSP(producto, precio);
+            window.open(url, '_blank');
+        });
+    });
+</script>
+
+</body>
+</html>
