@@ -436,6 +436,56 @@
         });
     });
 </script>
-
+<!-- Modal de Encargo -->
+<div id="modal-encargo" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar-modal">&times;</span>
+    <h2>📝 Hacer un Encargo</h2>
+    <p>Seleccioná las cantidades que querés de cada producto:</p>
+    
+    <form id="form-encargo">
+      <!-- Bombones -->
+      <div class="producto-encargo">
+        <label>🍫 Bombón Grande ($60 c/u)</label>
+        <input type="number" id="bombon-grande" class="cantidad" min="0" value="0" data-precio="60">
+      </div>
+      
+      <div class="producto-encargo">
+        <label>🍬 Bombón Pequeño ($20 c/u)</label>
+        <input type="number" id="bombon-pequeno" class="cantidad" min="0" value="0" data-precio="20">
+      </div>
+      
+      <!-- Tabletas -->
+      <div class="producto-encargo">
+        <label>🍫🧈 Tableta Grande ($165 c/u)</label>
+        <input type="number" id="tableta-grande" class="cantidad" min="0" value="0" data-precio="165">
+      </div>
+      
+      <div class="producto-encargo">
+        <label>🍫 Tableta Mediana ($125 c/u)</label>
+        <input type="number" id="tableta-mediana" class="cantidad" min="0" value="0" data-precio="125">
+      </div>
+      
+      <div class="producto-encargo">
+        <label>🍬🍫 Tableta Pequeña ($55 c/u)</label>
+        <input type="number" id="tableta-pequena" class="cantidad" min="0" value="0" data-precio="55">
+      </div>
+      
+      <div class="total-encargo">
+        <strong>Total: $<span id="total-precio">0</span></strong>
+      </div>
+      
+      <div class="seleccion-contacto">
+        <label>📞 Enviar pedido a:</label>
+        <select id="contacto-encargo">
+          <option value="5352532067">Noelvis - 52532067</option>
+          <option value="5356398156">Karenia - 56398156</option>
+        </select>
+      </div>
+      
+      <button type="button" id="enviar-whatsapp" class="btn-enviar-pedido">💬 Enviar pedido por WhatsApp</button>
+    </form>
+  </div>
+</div>
 </body>
 </html>
