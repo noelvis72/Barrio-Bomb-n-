@@ -6,6 +6,25 @@
     <title>Barrio Bombón | Bombones y tabletas artesanales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Total más compacto */
+.total-encargo-compacto {
+  background-color: #ffecb3;
+  border-radius: 30px;
+  padding: 6px 15px;
+  margin: 12px 0;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  width: auto;
+  min-width: 120px;
+  align-self: center;
+}
+
+/* Ajuste para que el contenedor del total no ocupe tanto */
+.total-encargo-compacto strong {
+  font-size: 1rem;
+}
         /* Contenedor en línea para contacto + botón */
 .seleccion-contacto-linea {
   display: flex;
@@ -723,9 +742,9 @@
         <input type="number" id="tableta-pequena" class="cantidad" min="0" value="0" data-precio="55">
       </div>
       
-      <div class="total-encargo">
-        <strong>Total: $<span id="total-precio">0</span></strong>
-      </div>
+      <div class="total-encargo-compacto">
+  <strong>💰 Total: $<span id="total-precio">0</span></strong>
+</div>
       
       <div class="seleccion-contacto-linea">
   <div class="contacto-selector">
