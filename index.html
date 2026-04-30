@@ -6,6 +6,152 @@
     <title>Barrio Bombón | Bombones y tabletas artesanales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Botón Encargo en el menú */
+#btn-encargo-nav {
+  background-color: #ff9800;
+  padding: 8px 15px;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+}
+
+#btn-encargo-nav:hover {
+  background-color: #e68900;
+  color: white;
+}
+
+/* Modal (ventana emergente) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  animation: fadeIn 0.3s;
+}
+
+.modal-contenido {
+  background-color: #fff8f0;
+  margin: 5% auto;
+  padding: 25px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  animation: slideDown 0.4s;
+}
+
+.cerrar-modal {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #999;
+}
+
+.cerrar-modal:hover {
+  color: #333;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Productos dentro del modal */
+.producto-encargo {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.producto-encargo label {
+  font-weight: bold;
+  color: #5a3a1a;
+}
+
+.cantidad {
+  width: 80px;
+  padding: 8px;
+  border: 2px solid #ffb74d;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.total-encargo {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: #ffecb3;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.seleccion-contacto {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.seleccion-contacto select {
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #ffb74d;
+  background-color: white;
+  font-size: 14px;
+}
+
+.btn-enviar-pedido {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.btn-enviar-pedido:hover {
+  background-color: #128C7E;
+}
+
+@media (max-width: 600px) {
+  .modal-contenido {
+    width: 95%;
+    margin: 10% auto;
+    padding: 20px;
+  }
+  
+  .producto-encargo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .seleccion-contacto {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+    }
         * {
             margin: 0;
             padding: 0;
