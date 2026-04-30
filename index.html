@@ -6,6 +6,59 @@
     <title>Barrio Bombón | Bombones y tabletas artesanales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* Contenedor en línea para contacto + botón */
+.seleccion-contacto-linea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0 10px;
+  flex-wrap: wrap;
+}
+
+.contacto-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 2;
+  min-width: 180px;
+}
+
+.contacto-selector label {
+  font-weight: bold;
+  color: #5a3a1a;
+  white-space: nowrap;
+}
+
+.contacto-selector select {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 30px;
+  border: 1px solid #ffb74d;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Botón verde más pequeño y a la derecha */
+.btn-enviar-pedido-pequeno {
+  background-color: #25D366 !important;
+  color: white !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 100px;
+}
+
+.btn-enviar-pedido-pequeno:hover {
+  background-color: #128C7E !important;
+}
         /* ===== MENÚ CON BOTONES UNIFORMES ===== */
 .menu-principal {
   background-color: #fff3e0;
