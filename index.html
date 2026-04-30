@@ -633,5 +633,94 @@
     </form>
   </div>
 </div>
+    <script>
+  // Obtener elementos del modal
+  const modal = document.getElementById('modal-encargo');
+  const btnEncargo = document.getElementById('btn-encargo-nav');
+  const spanCerrar = document.getElementsByClassName('cerrar-modal')[0];
+  
+  // Abrir modal al hacer clic en "Encargo"
+  btnEncargo.onclick = function(e) {
+    e.preventDefault();
+    modal.style.display = 'block';
+  }
+  
+  // Cerrar modal al hacer clic en la X
+  spanCerrar.onclick = function() {
+    modal.style.display = 'none';
+  }
+  
+  // Cerrar modal si se hace clic fuera de él
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  }
+  
+  // Calcular total automáticamente
+  const cantidades = document.querySelectorAll('.cantidad');
+  const totalSpan = document.getElementById('total-precio');
+  
+  function calcularTotal() {
+    let total = 0;
+    cantidades.forEach(input => {
+      const cantidad = parseInt(input.value) || 0;
+      const precio = parseInt(input.dataset.precio);
+      total += cantidad * precio;
+    });
+    totalSpan.textContent = total;
+    return total;
+  }
+  
+  cantidades.forEach(input => {
+    input.addEventListener('input', calcularTotal);
+  });
+  
+  // Enviar pedido por WhatsApp
+  document.getElementById('enviar-whatsapp').addEventListener('click', function() {
+    // Obtener cantidades
+    const bombonGrande = parseInt(document.getElementById('bombon-grande').value) || 0;
+    const bombonPequeño = parseInt(document.getElementById('bombon-pequeno').value) || 0;
+    const tabletaGrande = parseInt(document.getElementById('tableta-grande').value) || 0;
+    const tabletaMediana = parseInt(document.getElementById('tableta-mediana').value) || 0;
+    const tabletaPequeña = parseInt(document.getElementById('tableta-pequena').value) || 0;
+    
+    const total = calcularTotal();
+    const contacto = document.getElementById('contacto-encargo').value;
+    
+    // Construir mensaje
+    let mensaje = "🍫 *NUEVO ENCARGO - BARRIO BOMBÓN* 🍫%0A%0A";
+    
+    if (bombonGrande > 0) mensaje += `🍫 Bombón Grande: ${bombonGrande} x $60 = $${bombonGrande * 60}%0A`;
+    if (bombonPequeño > 0) mensaje += `🍬 Bombón Pequeño: ${bombonPequeño} x $20 = $${bombonPequeño * 20}%0A`;
+    if (tabletaGrande > 0) mensaje += `🍫🧈 Tableta Grande: ${tabletaGrande} x $165 = $${tabletaGrande * 165}%0A`;
+    if (tabletaMediana > 0) mensaje += `🍫 Tableta Mediana: ${tabletaMediana} x $125 = $${tabletaMediana * 125}%0A`;
+    if (tabletaPequeña > 0) mensaje += `🍬🍫 Tableta Pequeña: ${tabletaPequeña} x $55 = $${tabletaPequeña * 55}%0A`;
+    
+    if (mensaje === "🍫 *NUEVO ENCARGO - BARRIO BOMBÓN* 🍫%0A%0A") {
+      alert("📝 Por favor, seleccioná al menos un producto.");
+      return;
+    }
+    
+    mensaje += `%0A💰 *TOTAL: $${total}*%0A%0A`;
+    mensaje += `📞 Hago el pedido desde la web. ¡Gracias!`;
+    
+    // Crear enlace de WhatsApp
+    const urlWhatsapp = `https://wa.me/${contacto}?text=${mensaje}`;
+    
+    // Abrir WhatsApp
+    window.open(urlWhatsapp, '_blank');
+    
+    // Opcional: cerrar modal y reiniciar formulario
+    modal.style.display = 'none';
+    
+    // Reiniciar cantidades
+    cantidades.forEach(input => input.value = 0);
+    calcularTotal();
+  });
+  
+  // Calcular total al cargar la página
+  calcularTotal();
+    </script>
 </body>
 </html>
